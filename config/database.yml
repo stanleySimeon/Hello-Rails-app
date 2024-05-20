@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: postgres
+  password: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: hellorails_development
+  user: postgres
+  password: postgres
+
+ 
+test:
+  <<: *default
+  database: hellorails_test
+  user: postgres
+  password: postgres
+
+production:
+  <<: *default
+  database: hellorails_production
+  username: hellorails
+  password: <%= ENV["HELLORAILS_DATABASE_PASSWORD"] %>
